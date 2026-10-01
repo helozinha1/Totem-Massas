@@ -8,7 +8,7 @@ import TelaModificarItem from './TelaModificarItem';
 import TelaPagamento from './TelaPagamento';
 import TelaProcessando from './TelaProcessando.jsx';
 import TelaSucesso from './TelaSucesso.jsx';
-import { categoriasDados, produtosDados } from '../data/menuDados';
+import { categoriasDados, produtosDados } from '../data/menuDados.js';
 
 export default function Totem() {
   const navegar = useNavigate();
