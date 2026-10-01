@@ -1,0 +1,12 @@
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import styles from './Totem.module.css';
+import TelaSplash from './TelaSplash';
+import TelaLocal from './TelaLocal';
+import TelaMenu from './TelaMenu';
+import TelaResumo from './TelaResumo';
+import TelaModificarItem from './TelaModificarItem';
+import TelaPagamento from './TelaPagamento';
+import TelaProcessando from './TelaProcessando';
+import TelaSucesso from './TelaSucesso';
+import { categoriasDados, produtosDados } from '../data/menuDados';
