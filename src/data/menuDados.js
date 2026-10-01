@@ -1,14 +1,21 @@
 export const categoriasDados = [
+<<<<<<< Updated upstream
   { id: 'combos', name: 'Combos & Ofertas' },
   { id: 'massas', name: 'Massas & Nhoques' },
   { id: 'lasanhas', name: 'Lasanhas & Forno' },
   { id: 'pizzas', name: 'Pizzas Brotão' },
   { id: 'acompanhamentos', name: 'Acompanhamentos' },
   { id: 'sobremesas', name: 'Sobremesas' },
+=======
+  { id: 'massas', name: 'Massas' },
+  { id: 'sobremesas', name: 'Sobremesas' },
+  { id: 'acompanhamentos', name: 'Acompanhamentos' },
+>>>>>>> Stashed changes
   { id: 'bebidas', name: 'Bebidas' }
 ];
 
 export const produtosDados = [
+<<<<<<< Updated upstream
   // COMBOS & OFERTAS
   { id: 'c1', name: 'Combo Express (Massa + Refri)', price: 89.9, image: '🍝', categoryId: 'combos', category: { name: 'Combos & Ofertas' } },
   { id: 'c2', name: 'Combo Pizza (Pizza + Refri)', price: 79.9, image: '🍕', categoryId: 'combos', category: { name: 'Combos & Ofertas' } },
@@ -41,4 +48,27 @@ export const produtosDados = [
   { id: 'b2', name: 'Vinho em Taça', price: 42.9, image: '🍷', categoryId: 'bebidas', category: { name: 'Bebidas' } },
   { id: 'b3', name: 'Soda Italiana', price: 24.9, image: '🥤', categoryId: 'bebidas', category: { name: 'Bebidas' } },
   { id: 'b4', name: 'Refrigerante Lata', price: 14.9, image: '🥤', categoryId: 'bebidas', category: { name: 'Bebidas' } }
+=======
+  // Massas (Preço base = Meia-entrada)
+  { id: 'm1', name: 'Spaghetti Bolognese', price: 25, image: '🍝', categoryId: 'massas', category: { name: 'Massas' } },
+  { id: 'm2', name: 'Risotto de Cogumelos', price: 28, image: '🍚', categoryId: 'massas', category: { name: 'Massas' } },
+  { id: 'm3', name: 'Lasanha à Bolonhesa', price: 30, image: '🍝', categoryId: 'massas', category: { name: 'Massas' } },
+  { id: 'f4', name: 'De Volta para o Front', price: 15, image: '🚗', categoryId: 'filmes2d', category: { name: 'Filmes 2D' } },
+
+  // Filmes 3D (Preço base = Meia-entrada)
+  { id: 'f5', name: 'Avatar: O Caminho do Dado', price: 20, image: '👽', categoryId: 'filmes3d', category: { name: 'Filmes 3D' } },
+  { id: 'f6', name: 'Jurassic Byte', price: 20, image: '🦖', categoryId: 'filmes3d', category: { name: 'Filmes 3D' } },
+
+  // Bomboniere
+  { id: 'b1', name: 'Pipoca Salgada', price: 15, image: '🍿', categoryId: 'bomboniere', category: { name: 'Bomboniere' } },
+  { id: 'b2', name: 'Pipoca Doce', price: 18, image: '🍿', categoryId: 'bomboniere', category: { name: 'Bomboniere' } },
+  { id: 'b3', name: 'Nachos c/ Cheddar', price: 20, image: '🧀', categoryId: 'bomboniere', category: { name: 'Bomboniere' } },
+  { id: 'b4', name: 'Balas M&Ms', price: 10, image: '🍬', categoryId: 'bomboniere', category: { name: 'Bomboniere' } },
+
+  // Bebidas
+  { id: 'd1', name: 'Refri Cola', price: 10, image: '🥤', categoryId: 'bebidas', category: { name: 'Bebidas' } },
+  { id: 'd2', name: 'Refri Guaraná', price: 10, image: '🥤', categoryId: 'bebidas', category: { name: 'Bebidas' } },
+  { id: 'd3', name: 'Suco de Laranja', price: 8, image: '🧃', categoryId: 'bebidas', category: { name: 'Bebidas' } },
+  { id: 'd4', name: 'Água Mineral', price: 5, image: '💧', categoryId: 'bebidas', category: { name: 'Bebidas' } }
+>>>>>>> Stashed changes
 ];

@@ -6,8 +6,8 @@ import TelaMenu from './TelaMenu';
 import TelaResumo from './TelaResumo';
 import TelaModificarItem from './TelaModificarItem';
 import TelaPagamento from './TelaPagamento';
-import TelaProcessando from './TelaProcessando.jsx';
-import TelaSucesso from './TelaSucesso.jsx';
+import TelaProcessando from './TelaProcessando';
+import TelaSucesso from './TelaSucesso';
 import { categoriasDados, produtosDados } from '../data/menuDados.js';
 
 export default function Totem() {
