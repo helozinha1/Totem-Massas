@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700;800&display=swap');
 
 /* ============================================================
-   TelaModificarItem · 100% Mobile App · Tema Italiano
+   TelaPagamento · 100% Mobile App · Tema Italiano
    ============================================================ */
 
-.tela-review {
+.tela-pagamento {
   --verde: #1f6b3a;
   --verde-escuro: #14492a;
   --verde-claro: #e6f1e9;
@@ -21,13 +21,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  min-height: 100vh;
-  min-height: 100dvh;
-  padding: 24px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+  height: 100vh;
+  height: 100dvh;
+  padding: 32px 18px calc(20px + env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
   background: var(--creme);
   color: var(--tinta);
@@ -39,7 +39,7 @@
 }
 
 /* Faixa tricolor no topo */
-.tela-review::before {
+.tela-pagamento::before {
   content: '';
   position: absolute;
   top: 0;
@@ -54,145 +54,85 @@
   );
 }
 
-.tela-review > h2 {
+.tela-pagamento h2 {
   font-family: var(--fonte-titulo);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--vermelho);
-  margin-bottom: 12px;
   text-align: center;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  line-height: 1.25;
 }
 
-/* CONTAINER CARD PRINCIPAL */
-.quantity-container {
+/* CONTAINER DAS OPÇÕES DE PAGAMENTO */
+.opcoes-pagamento {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  justify-content: center;
+}
+
+.opcoes-pagamento button {
+  width: 100%;
+  min-height: 58px;
+  padding: 14px 20px;
   background: var(--branco);
-  border: 1px solid #e2dacb;
-  border-radius: 20px;
-  padding: 24px 18px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-}
-
-.quantity-container h2 {
-  font-family: var(--fonte-titulo);
   color: var(--tinta);
-  margin: 0;
-  line-height: 1.2;
-}
-
-/* IMAGEM / EMOJI DO PRODUTO */
-.produto-img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  user-select: none;
-}
-
-/* CONTROLES DE QUANTIDADE (+ e -) */
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin: 10px 0;
-  background-color: var(--verde-claro);
-  padding: 8px 18px;
-  border-radius: 50px;
-  border: 1px solid var(--verde);
-}
-
-.btn-qty {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: var(--verde);
-  color: var(--branco);
-  font-size: 1.5rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(31, 107, 58, 0.3);
-  transition: transform 0.1s ease, background-color 0.1s ease;
-}
-
-.btn-qty:active {
-  background: var(--verde-escuro);
-  transform: scale(0.92);
-}
-
-.qty-display {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--verde-escuro);
-  min-width: 36px;
-  text-align: center;
-}
-
-/* AÇÕES DO ITEM */
-.quantity-actions {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.btn-adicionar,
-.btn-cancelar,
-.btn-voltar-inline {
-  width: 100%;
-  min-height: 48px;
-  border-radius: 12px;
+  border: 2px solid #e2dacb;
+  border-radius: 16px;
   font-family: var(--fonte-corpo);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Seta indicativa na direita */
+.opcoes-pagamento button::after {
+  content: '➔';
   font-size: 0.95rem;
+  color: var(--verde);
+  transition: transform 0.15s ease;
+}
+
+/* Efeito ao tocar */
+.opcoes-pagamento button:active {
+  background-color: var(--verde-claro);
+  border-color: var(--verde);
+  color: var(--verde-escuro);
+  transform: scale(0.98);
+}
+
+.opcoes-pagamento button:active::after {
+  transform: translateX(4px);
+}
+
+/* BOTÃO VOLTAR */
+.btn-voltar-review {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 20px;
+  background: var(--branco);
+  color: var(--vermelho);
+  border: 2px solid var(--vermelho);
+  border-radius: 14px;
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
   font-weight: 800;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: transform 0.1s ease, background-color 0.1s ease;
-  box-sizing: border-box;
+  transition: transform 0.1s ease, background-color 0.1s ease, color 0.1s ease;
 }
 
-/* Salvar Alterações */
-.btn-adicionar {
-  background: var(--verde);
-  color: var(--branco);
-  box-shadow: 0 3px 0 var(--verde-escuro);
-}
-
-.btn-adicionar:active {
-  transform: translateY(2px);
-  box-shadow: none;
-}
-
-/* Remover Item */
-.btn-cancelar {
+.btn-voltar-review:active {
   background: var(--vermelho);
   color: var(--branco);
-  box-shadow: 0 3px 0 var(--vermelho-escuro);
-}
-
-.btn-cancelar:active {
-  transform: translateY(2px);
-  box-shadow: none;
-}
-
-/* Cancelar / Voltar */
-.btn-voltar-inline {
-  background: var(--branco);
-  color: var(--tinta);
-  border-color: #d0c8b8;
-}
-
-.btn-voltar-inline:active {
-  background: #f3efe6;
-  transform: scale(0.98);
+  transform: scale(0.97);
 }

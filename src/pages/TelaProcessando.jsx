@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TelaSplash.module.css';
+import styles from './TelaProcessando.module.css';
 
 export default function TelaProcessando({ metodoPagamento }) {
   return (

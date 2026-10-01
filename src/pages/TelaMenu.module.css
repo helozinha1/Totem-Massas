@@ -69,8 +69,8 @@
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  background: #f3efe6;
-  border-right: 2px solid #e2dacb;
+  background: #ffe7e7; /* Verde claro super elegante */
+  border-right: 2px solid #f7d8d8;
 }
 
 .menu-lateral::-webkit-scrollbar {

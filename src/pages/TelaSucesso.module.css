@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700;800&display=swap');
+
+/* ============================================================
+   TelaSplash / TelaSucesso · 100% Mobile App · Tema Italiano
+   ============================================================ */
+
+.tela-splash {
+  --verde: #1f6b3a;
+  --verde-escuro: #14492a;
+  --verde-claro: #e6f1e9;
+  --vermelho: #c8102e;
+  --vermelho-escuro: #9d0c24;
+  --branco: #ffffff;
+  --creme: #fffbf2;
+  --tinta: #2a2420;
+
+  --fonte-titulo: 'Fraunces', Georgia, serif;
+  --fonte-corpo: 'Nunito', system-ui, sans-serif;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  height: 100vh;
+  height: 100dvh;
+  padding: 32px 20px;
+  box-sizing: border-box;
+  background: var(--creme);
+  color: var(--tinta);
+  font-family: var(--fonte-corpo);
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* Faixa tricolor no topo */
+.tela-splash::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(6px + env(safe-area-inset-top, 0px));
+  background: linear-gradient(
+    90deg,
+    var(--verde) 0 33.33%,
+    var(--branco) 33.33% 66.66%,
+    var(--vermelho) 66.66% 100%
+  );
+}
+
+/* Título de Sucesso */
+.titulo-sucesso {
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--verde-escuro);
+  margin: 0 0 12px 0;
+}
+
+/* Instrução principal */
+.instrucao-sucesso {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #55504a;
+  margin: 0 0 20px 0;
+}
+
+/* Card do Número do Pedido */
+.numero-pedido {
+  font-family: var(--fonte-titulo);
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: var(--vermelho);
+  background: var(--branco);
+  border: 3px dashed var(--vermelho);
+  border-radius: 20px;
+  padding: 16px 36px;
+  margin: 10px 0 24px 0;
+  box-shadow: 0 8px 20px rgba(200, 16, 46, 0.12);
+  letter-spacing: 1px;
+}
+
+/* Subtexto da retirada de recibo */
+.subtexto-sucesso {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--verde-escuro);
+  background-color: var(--verde-claro);
+  border: 1px solid var(--verde);
+  border-radius: 12px;
+  padding: 10px 18px;
+  margin: 0;
+}
