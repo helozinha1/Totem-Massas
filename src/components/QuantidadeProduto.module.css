@@ -1,26 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Nunito:wght@700;800;900&display=swap');
 
 /* ============================================================
-   QuantidadeProduto · Tema Italiano Mobile
+   QuantidadeProduto · Sem Fundo na Imagem
    ============================================================ */
 
 .quantity-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 20px 16px;
+  padding: 22px 18px;
   box-sizing: border-box;
-  background: var(--branco, #ffffff);
-  border: 1px solid #e2dacb;
+  background-color: var(--branco, #ffffff);
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-  text-align: center;
+  border: 1.5px solid #e2dacb;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
   font-family: var(--fonte-corpo, 'Nunito', system-ui, sans-serif);
-  position: relative;
 }
 
 .btn-voltar-inline {
@@ -30,12 +27,13 @@
   color: var(--tinta, #2a2420);
   border: 1.5px solid #d0c8b8;
   border-radius: 10px;
-  font-family: var(--fonte-corpo, 'Nunito', system-ui, sans-serif);
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   margin-bottom: 12px;
   transition: transform 0.1s ease, background-color 0.1s ease;
+  touch-action: manipulation;
 }
 
 .btn-voltar-inline:active {
@@ -43,104 +41,116 @@
   transform: scale(0.96);
 }
 
-/* Título do Produto + Variação (Sobrescreve o estilo inline no mobile para evitar estouro de ecrã) */
-.quantity-container h2 {
+.titulo-produto {
   font-family: var(--fonte-titulo, 'Fraunces', Georgia, serif);
-  font-size: 1.3rem !important;
+  font-size: 1.35rem;
   font-weight: 800;
-  color: var(--tinta, #2a2420);
-  margin: 4px 0 12px;
+  color: var(--vermelho, #c8102e);
+  text-align: center;
+  margin: 4px 0 16px 0;
   line-height: 1.25;
 }
 
-/* Área da imagem/emoji */
-.produto-img {
+/* CONTAINER DA IMAGEM (SEM FUNDO NEM BORDA) */
+.produto-img-container {
+  width: 100%;
+  max-width: 240px;
+  height: 160px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  font-size: 4.5rem !important; /* Reduzido de 8rem para caber no telemóvel */
-  margin: 12px 0 !important;
-  user-select: none;
+  overflow: hidden;
+  margin: 8px 0 20px 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Seletor de quantidade (+ e -) */
+/* IMAGEM PURA SEM CORTE */
+.img-item {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  display: block;
+}
+
+.emoji-item {
+  font-size: 5rem;
+  line-height: 1;
+}
+
 .quantity-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin: 12px 0;
-  background-color: var(--verde-claro, #e6f1e9);
-  padding: 8px 20px;
-  border-radius: 50px;
-  border: 1px solid var(--verde, #1f6b3a);
+  gap: 20px;
+  margin-bottom: 16px;
 }
 
 .btn-qty {
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: none;
-  background: var(--verde, #1f6b3a);
-  color: var(--branco, #ffffff);
-  font-size: 1.5rem;
+  border: 2px solid var(--verde, #1f6b3a);
+  background: var(--branco, #ffffff);
+  color: var(--verde, #1f6b3a);
+  font-size: 1.8rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(31, 107, 58, 0.3);
-  transition: transform 0.1s ease, background-color 0.1s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.1s ease, background-color 0.1s ease, color 0.1s ease;
+  touch-action: manipulation;
 }
 
 .btn-qty:active {
-  background-color: var(--verde-escuro, #14492a);
+  background-color: var(--verde, #1f6b3a);
+  color: var(--branco, #ffffff);
   transform: scale(0.92);
 }
 
 .qty-display {
-  font-size: 1.5rem;
+  font-family: var(--fonte-titulo, 'Fraunces', Georgia, serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--tinta, #2a2420);
+  min-width: 40px;
+  text-align: center;
+  user-select: none;
+}
+
+.valor-total {
+  font-family: var(--fonte-titulo, 'Fraunces', Georgia, serif);
+  font-size: 1.45rem;
   font-weight: 800;
   color: var(--verde-escuro, #14492a);
-  min-width: 36px;
+  margin: 10px 0 20px 0;
   text-align: center;
 }
 
-/* Preço Total */
-.quantity-container h2:nth-of-type(2) {
-  font-family: var(--fonte-titulo, 'Fraunces', Georgia, serif);
-  font-size: 1.35rem !important;
-  color: var(--verde-escuro, #14492a) !important;
-  margin-top: 12px !important;
-  margin-bottom: 20px;
-}
-
-/* Botões de Ação */
 .quantity-actions {
-  width: 100%;
   display: flex;
-  gap: 10px;
-}
-
-.btn-cancelar,
-.btn-adicionar {
-  flex: 1;
-  min-height: 48px;
-  border-radius: 12px;
-  font-family: var(--fonte-corpo, 'Nunito', system-ui, sans-serif);
-  font-size: 0.9rem;
-  font-weight: 800;
-  cursor: pointer;
-  border: 2px solid transparent;
-  box-sizing: border-box;
-  transition: transform 0.1s ease, background-color 0.1s ease;
+  width: 100%;
+  gap: 12px;
 }
 
 .btn-cancelar {
+  flex: 1;
+  padding: 14px;
   background: var(--branco, #ffffff);
   color: var(--vermelho, #c8102e);
-  border-color: var(--vermelho, #c8102e);
+  border: 2px solid var(--vermelho, #c8102e);
+  border-radius: 12px;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.1s ease, color 0.1s ease;
+  touch-action: manipulation;
 }
 
 .btn-cancelar:active {
@@ -150,12 +160,22 @@
 }
 
 .btn-adicionar {
+  flex: 2;
+  padding: 14px;
   background: var(--verde, #1f6b3a);
   color: var(--branco, #ffffff);
-  box-shadow: 0 3px 0 var(--verde-escuro, #14492a);
+  border: none;
+  border-radius: 12px;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(31, 107, 58, 0.25);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+  touch-action: manipulation;
 }
 
 .btn-adicionar:active {
-  transform: translateY(2px);
-  box-shadow: none;
+  background: var(--verde-escuro, #14492a);
+  transform: scale(0.97);
 }

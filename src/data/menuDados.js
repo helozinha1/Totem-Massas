@@ -1,5 +1,4 @@
-import comboExpress from '../assets/img/Combos/combo-express.png';
-import comboPizza from '../assets/img/Combos/combo-pizza.png';
+
 
 import macarraoBolonhesa from '../assets/img/Massas/Macarrao/macarrao-bolonhesa.png';
 import macarraoCarbonara from '../assets/img/Massas/Macarrao/macarrao-carbonara.png';
@@ -25,7 +24,6 @@ import sodaItaliana from '../assets/img/Bebidas/soda-italiana.png';
 import refriLata from '../assets/img/Bebidas/refri-lata.png';
 
 export const categoriasDados = [
-  { id: 'combos', name: 'Combos & Ofertas' },
   { id: 'massas', name: 'Massas & Nhoques' },
   { id: 'lasanhas', name: 'Lasanhas & Forno' },
   { id: 'pizzas', name: 'Pizzas Brotão' },
@@ -35,9 +33,6 @@ export const categoriasDados = [
 ];
 
 export const produtosDados = [
-  // COMBOS & OFERTAS
-  { id: 'c1', name: 'Combo Express (Massa + Refri)', price: 89.9, image: comboExpress, categoryId: 'combos', category: { name: 'Combos & Ofertas' } },
-  { id: 'c2', name: 'Combo Pizza (Pizza + Refri)', price: 79.9, image: comboPizza, categoryId: 'combos', category: { name: 'Combos & Ofertas' } },
 
   // MASSAS & NHOQUES
   { id: 'm1', name: 'Spaghetti à Bolonhesa', price: 68.9, image: macarraoBolonhesa, categoryId: 'massas', category: { name: 'Massas & Nhoques' } },

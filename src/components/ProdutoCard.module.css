@@ -1,61 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&display=swap');
+/* ============================================================
+   ProdutoCard · Tema Cantina Italiana (100% Sem Cortar Imagem)
+   ============================================================ */
 
 .produto-card {
-  background-color: #ffffff;
-  border: 2px solid #e2dacb;
-  border-radius: 12px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #eee7df;
+  border-radius: 16px;
   cursor: pointer;
-  user-select: none;
-  font-family: 'Poppins', sans-serif;
-  transition: all 0.15s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  touch-action: manipulation;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  box-sizing: border-box;
 }
 
-/* Efeito ao clicar/tocar no card (destaque em Vermelho Italiano) */
+.produto-card:hover {
+  transform: translateY(-2px);
+  border-color: #d9ccc0;
+  box-shadow: 0 6px 18px rgba(60, 50, 40, 0.08);
+}
+
 .produto-card:active {
-  border-color: #c8102e;
-  transform: scale(0.96);
-  box-shadow: 0 0 10px rgba(200, 16, 46, 0.2);
+  transform: scale(0.98);
 }
 
-/* CONTAINER DA IMAGEM OU ÍCONE */
 .produto-img {
   width: 100%;
-  height: 85px;
-  background-color: #fdfbf7;
-  border-radius: 8px;
+  height: 145px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-bottom: 8px;
-  font-size: 2.5rem; /* Tamanho padrão para emojis/ícones */
+  border-radius: 12px;
+  background: #fdf8f1;
+  box-sizing: border-box;
 }
 
-/* TÍTULO DO PRODUTO */
-.produto-card h3 {
-  font-size: 0.85rem;
+.img-item {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.produto-titulo {
+  width: 100%;
+  margin: 10px 2px 3px;
+  color: #403b38;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
   font-weight: 600;
-  color: #1a1a1a;
-  margin: 4px 0;
   line-height: 1.25;
-  /* Limita a no máximo 2 linhas para não desalinhar o grid */
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
-/* PREÇO DO PRODUTO */
-.produto-card p {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #008c45; /* Verde Italiano */
-  margin: 4px 0 0 0;
+.produto-preco {
+  margin: 0;
+  color: #6b9491;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@media (max-width: 360px) {
+  .produto-card {
+    padding: 8px;
+  }
+
+  .produto-img {
+    height: 125px;
+  }
+
+  .produto-titulo {
+    font-size: 0.82rem;
+  }
+
+  .produto-preco {
+    font-size: 0.82rem;
+  }
 }

@@ -1,11 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap');
+
+/* ============================================================
+   TelaSplash · Imagem Expandida + Card KFC Interno
+   ============================================================ */
 
 .tela-splash {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--creme, #fffbf2); /* Fundo creme oficial da cantina */
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* IMAGEM EXPANDIDA EM TAMANHO MÁXIMO SEM CORTE */
+.banner-img {
+  width: 100%;
   height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+/* CARD ESCURO FLUTUANTE (ESTILO TOTEM KFC) */
+.card-totem-kfc {
+  position: absolute;
+  width: 130px;
+  padding: 14px 10px;
+  background-color: rgba(30, 30, 30, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #0b1b3d;
-  color: white;
-  cursor: pointer;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+  box-sizing: border-box;
+
+  /* Movimento lento (28s) e contido estritamente dentro da imagem */
+  animation: andarDentroDaImagem 28s infinite ease-in-out;
+}
+
+/* MÃOZINHA PISCANDO NO TOPO */
+.icone-mao {
+  font-size: 2rem;
+  color: #ffffff;
+  animation: toquePulsar 1.2s infinite alternate ease-in-out;
+}
+
+/* TEXTO "TOQUE PARA COMEÇAR" */
+.texto-comecar {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* CIRCULO COM A BANDEIRA EMBAIXO */
+.bolinha-bandeira {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* Animação do toque na mãozinha */
+@keyframes toquePulsar {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.18) translateY(-3px);
+  }
+}
+
+/* REPERCURSO 100% RESTRITO ÀS BORDAS INTERNAS DA TELA */
+@keyframes andarDentroDaImagem {
+  0% {
+    top: 5%;
+    left: 5%;
+  }
+  15% {
+    top: calc(50% - 75px);
+    left: calc(50% - 65px); /* Centro da foto */
+  }
+  30% {
+    top: 5%;
+    left: calc(95% - 130px); /* Canto Superior Direito interno */
+  }
+  45% {
+    top: calc(50% - 75px);
+    left: calc(95% - 130px); /* Lado Direito interno */
+  }
+  60% {
+    top: calc(95% - 150px);
+    left: calc(50% - 65px); /* Meio Inferior interno */
+  }
+  75% {
+    top: calc(95% - 150px);
+    left: 5%; /* Canto Inferior Esquerdo interno */
+  }
+  88% {
+    top: calc(50% - 75px);
+    left: 5%; /* Lado Esquerdo interno */
+  }
+  100% {
+    top: 5%;
+    left: 5%;
+  }
 }

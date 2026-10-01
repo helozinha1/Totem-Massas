@@ -6,7 +6,6 @@ export default function ProdutoCard({ produto, onClick, nomeOpcao, precoExtra, i
   const nomeExibicao = nomeOpcao || produto.name;
   const imagemExibicao = iconeVisual || produto.image;
 
-
   const ehImagem =
     typeof imagemExibicao === 'string' &&
     (/\.(png|jpe?g|webp|svg|gif)(\?.*)?$/i.test(imagemExibicao) ||
@@ -20,14 +19,14 @@ export default function ProdutoCard({ produto, onClick, nomeOpcao, precoExtra, i
           <img
             src={imagemExibicao}
             alt={nomeExibicao}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            className={styles["img-item"]}
           />
         ) : (
           imagemExibicao
         )}
       </div>
-      <h3>{nomeExibicao}</h3>
-      <p>R$ {precoCalculado.toFixed(2).replace('.', ',')}</p>
+      <h3 className={styles["produto-titulo"]}>{nomeExibicao}</h3>
+      <p className={styles["produto-preco"]}>R$ {precoCalculado.toFixed(2).replace('.', ',')}</p>
     </div>
   );
 }

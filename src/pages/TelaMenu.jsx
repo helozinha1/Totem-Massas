@@ -1,26 +1,52 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUtensils,
+  faBowlFood,
+  faIceCream,
+  faPizzaSlice,
+  faBurger,
+  faGlassWater
+} from '@fortawesome/free-solid-svg-icons';
+
 import styles from './TelaMenu.module.css';
+
 import CategoriaItem from '../components/CategoriaItem';
 import ProdutoCard from '../components/ProdutoCard';
 import VariacaoProduto from '../components/VariacaoProduto';
 import QuantidadeProduto from '../components/QuantidadeProduto';
 
 export default function TelaMenu({
-  categorias, produtos, categoriaSelecionada, setCategoriaSelecionada,
-  carrinho, setCarrinho, executarComAtraso
+  categorias,
+  produtos,
+  categoriaSelecionada,
+  setCategoriaSelecionada,
+  carrinho,
+  setCarrinho,
+  executarComAtraso
 }) {
   const navegar = useNavigate();
+
   const [produtoAtivo, setProdutoAtivo] = useState(null);
   const [variacaoSelecionada, setVariacaoSelecionada] = useState(null);
   const [quantidade, setQuantidade] = useState(1);
 
   const getIconeCategoria = (nome) => {
-    if (nome === 'Massas') return '🍝';
-    if (nome === 'Sobremesas') return '🍦';
-    if (nome === 'Acompanhamentos') return '🍟';
-    if (nome === 'Bebidas') return '🥤';
-    return '🍽️';
+    const icones = {
+      Massas: faBowlFood,
+      Sobremesas: faIceCream,
+      Acompanhamentos: faPizzaSlice,
+      Bebidas: faGlassWater,
+      'Hambúrgueres': faBurger
+    };
+
+    return (
+      <FontAwesomeIcon
+        icon={icones[nome] || faUtensils}
+      />
+    );
   };
 
   const abrirOpcoes = (produto) => {
@@ -33,30 +59,46 @@ export default function TelaMenu({
 
   const selecionarVariacao = (nomeOpcao, precoExtra = 0) => {
     executarComAtraso(() => {
-      setVariacaoSelecionada({ nome: nomeOpcao, preco: precoExtra });
+      setVariacaoSelecionada({
+        nome: nomeOpcao,
+        preco: precoExtra
+      });
+
       setQuantidade(1);
     });
   };
 
   const adicionarAoCarrinho = () => {
     executarComAtraso(() => {
-      const nomeCompleto = produtoAtivo.name + " (" + variacaoSelecionada.nome + ")";
-      const precoFinal = produtoAtivo.price + variacaoSelecionada.preco;
+      const nomeCompleto =
+        produtoAtivo.name + ' (' + variacaoSelecionada.nome + ')';
 
-      const indiceExistente = carrinho.findIndex(item => item.id === produtoAtivo.id && item.name === nomeCompleto);
+      const precoFinal =
+        produtoAtivo.price + variacaoSelecionada.preco;
+
+      const indiceExistente = carrinho.findIndex(
+        (item) =>
+          item.id === produtoAtivo.id &&
+          item.name === nomeCompleto
+      );
 
       if (indiceExistente >= 0) {
         const novoCarrinho = [...carrinho];
+
         novoCarrinho[indiceExistente].quantity += quantidade;
+
         setCarrinho(novoCarrinho);
       } else {
-        setCarrinho(anterior => [...anterior, {
-          ...produtoAtivo,
-          name: nomeCompleto,
-          price: precoFinal,
-          idCarrinho: Date.now(),
-          quantity: quantidade
-        }]);
+        setCarrinho((anterior) => [
+          ...anterior,
+          {
+            ...produtoAtivo,
+            name: nomeCompleto,
+            price: precoFinal,
+            idCarrinho: Date.now(),
+            quantity: quantidade
+          }
+        ]);
       }
 
       setProdutoAtivo(null);
@@ -72,76 +114,122 @@ export default function TelaMenu({
   };
 
   const concluirPedido = () => {
-    executarComAtraso(() => navegar('/resumo'));
+    executarComAtraso(() => {
+      navegar('/resumo');
+    });
   };
 
-  const totalCarrinho = carrinho.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  const quantidadeItens = carrinho.reduce((acc, item) => acc + item.quantity, 0);
+  const totalCarrinho = carrinho.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
+  const quantidadeItens = carrinho.reduce(
+    (acc, item) => acc + item.quantity,
+    0
+  );
 
   return (
-    <div className={styles["tela-menu"]}>
-      <div className={styles["menu-container"]}>
-        {/* LATERAL ESQUERDA (CATEGORIAS) */}
-        {!variacaoSelecionada && (
-          <div className={styles["menu-lateral"]}>
-            {!produtoAtivo && categorias.map(categoria => (
-              <CategoriaItem 
-                key={categoria.id}
-                categoria={categoria}
-                categoriaSelecionada={categoriaSelecionada}
-                setCategoriaSelecionada={setCategoriaSelecionada}
-                getIconeCategoria={getIconeCategoria}
-                executarComAtraso={executarComAtraso}
-              />
-            ))}
-          </div>
-        )}
+    <div className={styles['tela-menu']}>
 
-        {/* LATERAL DIREITA (PRODUTOS) */}
-        <div className={styles["menu-produtos"]}>
-          {!produtoAtivo ? (
-            <div className={styles["produtos-grid"]}>
-              {produtos.map(produto => (
-                <ProdutoCard 
-                  key={produto.id} 
-                  produto={produto} 
-                  onClick={() => abrirOpcoes(produto)} 
+      <div className={styles['menu-container']}>
+
+        {!variacaoSelecionada && (
+          <aside className={styles['menu-lateral']}>
+
+            {!produtoAtivo &&
+              categorias.map((categoria) => (
+                <CategoriaItem
+                  key={categoria.id}
+                  categoria={categoria}
+                  categoriaSelecionada={categoriaSelecionada}
+                  setCategoriaSelecionada={setCategoriaSelecionada}
+                  getIconeCategoria={getIconeCategoria}
+                  executarComAtraso={executarComAtraso}
                 />
               ))}
+
+          </aside>
+        )}
+
+        <main className={styles['menu-produtos']}>
+
+          {!produtoAtivo ? (
+
+            <div className={styles['produtos-grid']}>
+
+              {produtos.map((produto) => (
+                <ProdutoCard
+                  key={produto.id}
+                  produto={produto}
+                  onClick={() => abrirOpcoes(produto)}
+                />
+              ))}
+
             </div>
+
           ) : !variacaoSelecionada ? (
-            <VariacaoProduto 
-              produtoAtivo={produtoAtivo} 
-              selecionarVariacao={selecionarVariacao} 
-              executarComAtraso={executarComAtraso} 
-              setProdutoAtivo={setProdutoAtivo} 
+
+            <VariacaoProduto
+              produtoAtivo={produtoAtivo}
+              selecionarVariacao={selecionarVariacao}
+              executarComAtraso={executarComAtraso}
+              setProdutoAtivo={setProdutoAtivo}
             />
+
           ) : (
-            <QuantidadeProduto 
-              produtoAtivo={produtoAtivo} 
-              variacaoSelecionada={variacaoSelecionada} 
-              quantidade={quantidade} 
-              setQuantidade={setQuantidade} 
-              executarComAtraso={executarComAtraso} 
-              setVariacaoSelecionada={setVariacaoSelecionada} 
-              setProdutoAtivo={setProdutoAtivo} 
-              adicionarAoCarrinho={adicionarAoCarrinho} 
+
+            <QuantidadeProduto
+              produtoAtivo={produtoAtivo}
+              variacaoSelecionada={variacaoSelecionada}
+              quantidade={quantidade}
+              setQuantidade={setQuantidade}
+              executarComAtraso={executarComAtraso}
+              setVariacaoSelecionada={setVariacaoSelecionada}
+              setProdutoAtivo={setProdutoAtivo}
+              adicionarAoCarrinho={adicionarAoCarrinho}
             />
+
           )}
-        </div>
+
+        </main>
       </div>
 
-      {/* RODAPÉ DO PEDIDO */}
-      <div className={styles["menu-rodape"]}>
-        <div className={styles["info-pedido"]}>
-          <span className={styles["valor-total"]}>Total: R$ {totalCarrinho.toFixed(2).replace('.', ',')}</span>
-          <span className={styles["qtd-itens"]}>{quantidadeItens} itens</span>
+      <footer className={styles['menu-rodape']}>
+
+        <div className={styles['info-pedido']}>
+
+          <span className={styles['valor-total']}>
+            Total: R$ {totalCarrinho.toFixed(2).replace('.', ',')}
+          </span>
+
+          <span className={styles['qtd-itens']}>
+            {quantidadeItens} itens
+          </span>
+
         </div>
-        <div className={styles["botoes-rodape"]}>
-          <button className={styles["btn-cancelar"]} onClick={cancelarPedido}>Cancelar</button>
-          <button className={styles["btn-concluir"]} onClick={concluirPedido} disabled={carrinho.length === 0}>Concluir Pedido</button>
+
+        <div className={styles['botoes-rodape']}>
+
+          <button
+            className={styles['btn-cancelar']}
+            onClick={cancelarPedido}
+          >
+            Cancelar
+          </button>
+
+          <button
+            className={styles['btn-concluir']}
+            onClick={concluirPedido}
+            disabled={carrinho.length === 0}
+          >
+            Concluir Pedido
+          </button>
+
         </div>
-      </div>
+
+      </footer>
+
     </div>
   );
 }

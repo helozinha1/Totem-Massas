@@ -5,53 +5,55 @@ import ProdutoCard from './ProdutoCard';
 export default function VariacaoProduto({ produtoAtivo, selecionarVariacao, executarComAtraso, setProdutoAtivo }) {
   return (
     <div className={styles["options-container"]}>
-      <button className={styles["btn-voltar-inline"]} onClick={() => executarComAtraso(() => setProdutoAtivo(null))}>Voltar</button>
-      <h2>Escolha a opção:</h2>
+      <button 
+        className={styles["btn-voltar-inline"]} 
+        onClick={() => executarComAtraso(() => setProdutoAtivo(null))}
+      >
+        ← Voltar
+      </button>
+
+      <h2>Escolha o tamanho da porção:</h2>
+
       <div className={styles["produtos-grid"]}>
-        {produtoAtivo.category.name.includes('Filmes') ? (
+        {produtoAtivo.category?.name?.toLowerCase().includes('massa') ? (
           <>
             <ProdutoCard
               produto={produtoAtivo}
-              onClick={() => selecionarVariacao('Meia-Entrada', 0)}
-              nomeOpcao="Meia-Entrada"
-              iconeVisual="🎫"
+              onClick={() => selecionarVariacao('Individual', 0)}
+              nomeOpcao="Individual"
             />
             <ProdutoCard
               produto={produtoAtivo}
-              onClick={() => selecionarVariacao('Inteira', produtoAtivo.price)}
-              nomeOpcao="Inteira"
-              precoExtra={produtoAtivo.price}
-              iconeVisual="🎟️"
+              onClick={() => selecionarVariacao('Para 2 Pessoas', 12.00)}
+              nomeOpcao="Para 2 Pessoas"
+              precoExtra={12.00}
+            />
+            <ProdutoCard
+              produto={produtoAtivo}
+              onClick={() => selecionarVariacao('Família (4 Pessoas)', 25.00)}
+              nomeOpcao="Família (4 Pessoas)"
+              precoExtra={25.00}
             />
           </>
-        ) : produtoAtivo.category.name === 'Bomboniere' || produtoAtivo.category.name === 'Bebidas' ? (
+        ) : produtoAtivo.category?.name?.toLowerCase().includes('bebida') ? (
           <>
             <ProdutoCard
               produto={produtoAtivo}
-              onClick={() => selecionarVariacao('Pequeno', 0)}
-              nomeOpcao="Pequeno"
-              fontSize="2rem"
+              onClick={() => selecionarVariacao('Lata 350ml', 0)}
+              nomeOpcao="Lata 350ml"
             />
             <ProdutoCard
               produto={produtoAtivo}
-              onClick={() => selecionarVariacao('Médio', 3.00)}
-              nomeOpcao="Médio"
-              precoExtra={3.00}
-              fontSize="2.8rem"
-            />
-            <ProdutoCard
-              produto={produtoAtivo}
-              onClick={() => selecionarVariacao('Grande', 5.00)}
-              nomeOpcao="Grande"
-              precoExtra={5.00}
-              fontSize="3.5rem"
+              onClick={() => selecionarVariacao('Jarra 1L', 8.00)}
+              nomeOpcao="Jarra 1L"
+              precoExtra={8.00}
             />
           </>
         ) : (
           <ProdutoCard
             produto={produtoAtivo}
-            onClick={() => selecionarVariacao('Tamanho Único', 0)}
-            nomeOpcao="Tamanho Único"
+            onClick={() => selecionarVariacao('Porção Padrão', 0)}
+            nomeOpcao="Porção Padrão"
           />
         )}
       </div>
