@@ -1,15 +1,11 @@
-import { useState } from 'react'
-import Totem from './pages/Totem'
-import './App.css'
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Totem from './pages/Totem'; 
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <Totem />
-    </>
-  )
+    </BrowserRouter>
+  );
 }
-
-export default App

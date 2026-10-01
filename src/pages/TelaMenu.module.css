@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700;800&display=swap');
+
+/* ============================================================
+   TelaMenu · 100% Mobile App · Trava em formato celular
+   ============================================================ */
+
+.tela-menu {
+  --verde: #1f6b3a;
+  --verde-escuro: #14492a;
+  --verde-claro: #e6f1e9;
+  --vermelho: #c8102e;
+  --vermelho-escuro: #9d0c24;
+  --branco: #ffffff;
+  --creme: #fffbf2;
+  --tinta: #2a2420;
+
+  --fonte-titulo: 'Fraunces', Georgia, serif;
+  --fonte-corpo: 'Nunito', system-ui, sans-serif;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px; /* Trava a largura máxima para simular tela de celular */
+  margin: 0 auto;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--creme);
+  color: var(--tinta);
+  font-family: var(--fonte-corpo);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Faixa tricolor no topo */
+.tela-menu::before {
+  content: '';
+  flex: 0 0 auto;
+  height: calc(6px + env(safe-area-inset-top, 0px));
+  background: linear-gradient(
+    90deg,
+    var(--verde) 0 33.33%,
+    var(--branco) 33.33% 66.66%,
+    var(--vermelho) 66.66% 100%
+  );
+  background-size: 100% 100%;
+}
+
+/* CONTAINER PRINCIPAL (Lado a Lado: Sidebar Esquerda + Produtos Direita) */
+.menu-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row; /* Categorias na esquerda, produtos na direita */
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ---------- CATEGORIAS (Sidebar vertical para celular) ---------- */
+.menu-lateral {
+  width: 95px; /* Largura fixa da coluna lateral */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 6px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  background: #f3efe6;
+  border-right: 2px solid #e2dacb;
+}
+
+.menu-lateral::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-lateral:empty {
+  display: none;
+}
+
+.menu-lateral > * {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ---------- PRODUTOS (Grade de 2 colunas com padrão xadrez) ---------- */
+.menu-produtos {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+  background-color: var(--creme);
+  background-image:
+    linear-gradient(rgba(200, 16, 46, 0.05) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(200, 16, 46, 0.05) 50%, transparent 50%);
+  background-size: 30px 30px;
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-items: stretch;
+}
+
+/* ---------- RODAPÉ DO PEDIDO ---------- */
+.menu-rodape {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--branco);
+  border-top: 4px solid var(--vermelho);
+  box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.info-pedido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.valor-total {
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--vermelho);
+}
+
+.qtd-itens {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--verde-escuro);
+  background-color: var(--verde-claro);
+  border: 1px solid var(--verde);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.botoes-rodape {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-cancelar,
+.btn-concluir {
+  min-height: 48px;
+  padding: 0 12px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-family: var(--fonte-corpo);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.btn-cancelar {
+  flex: 1 1 0;
+  background: var(--branco);
+  color: var(--vermelho);
+  border-color: var(--vermelho);
+}
+
+.btn-cancelar:active {
+  background: var(--vermelho);
+  color: var(--branco);
+  transform: scale(0.97);
+}
+
+.btn-concluir {
+  flex: 2 1 0;
+  background: var(--verde);
+  color: var(--branco);
+  box-shadow: 0 3px 0 var(--verde-escuro);
+}
+
+.btn-concluir:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.btn-concluir:disabled {
+  background: #d9d6cf;
+  color: #8a857b;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Telas muito estreitas (ex: celulares antigos) */
+@media (max-width: 330px) {
+  .menu-lateral {
+    width: 80px;
+  }
+  .produtos-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -5,7 +5,7 @@ import styles from './TelaSplash.module.css';
 export default function TelaSplash({ executarComAtraso }) {
   const navegar = useNavigate();
   return (
-    <div className={styles["tela-splash"]} onClick={() => executarComAtraso(() => navegar('/local'))}>
+    <div className={styles["tela-splash"]} onClick={() => executarComAtraso(() => navegar('/menu'))}>
       <div className={styles["banner-placeholder"]}>
         Banner Promocional
       </div>

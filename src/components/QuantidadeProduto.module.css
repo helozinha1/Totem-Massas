@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700;800&display=swap');
+
+/* ============================================================
+   QuantidadeProduto · Tema Italiano Mobile
+   ============================================================ */
+
+.quantity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  box-sizing: border-box;
+  background: var(--branco, #ffffff);
+  border: 1px solid #e2dacb;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  font-family: var(--fonte-corpo, 'Nunito', system-ui, sans-serif);
+  position: relative;
+}
+
+.btn-voltar-inline {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background: var(--branco, #ffffff);
+  color: var(--tinta, #2a2420);
+  border: 1.5px solid #d0c8b8;
+  border-radius: 10px;
+  font-family: var(--fonte-corpo, 'Nunito', system-ui, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.btn-voltar-inline:active {
+  background-color: #f3efe6;
+  transform: scale(0.96);
+}
+
+/* Título do Produto + Variação (Sobrescreve o estilo inline no mobile para evitar estouro de ecrã) */
+.quantity-container h2 {
+  font-family: var(--fonte-titulo, 'Fraunces', Georgia, serif);
+  font-size: 1.3rem !important;
+  font-weight: 800;
+  color: var(--tinta, #2a2420);
+  margin: 4px 0 12px;
+  line-height: 1.25;
+}
+
+/* Área da imagem/emoji */
+.produto-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 4.5rem !important; /* Reduzido de 8rem para caber no telemóvel */
+  margin: 12px 0 !important;
+  user-select: none;
+}
+
+/* Seletor de quantidade (+ e -) */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0;
+  background-color: var(--verde-claro, #e6f1e9);
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--verde, #1f6b3a);
+}
+
+.btn-qty {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: var(--verde, #1f6b3a);
+  color: var(--branco, #ffffff);
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(31, 107, 58, 0.3);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.btn-qty:active {
+  background-color: var(--verde-escuro, #14492a);
+  transform: scale(0.92);
+}
+
+.qty-display {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--verde-escuro, #14492a);
+  min-width: 36px;
+  text-align: center;
+}
+
+/* Preço Total */
+.quantity-container h2:nth-of-type(2) {
+  font-family: var(--fonte-titulo, 'Fraunces', Georgia, serif);
+  font-size: 1.35rem !important;
+  color: var(--verde-escuro, #14492a) !important;
+  margin-top: 12px !important;
+  margin-bottom: 20px;
+}
+
+/* Botões de Ação */
+.quantity-actions {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-cancelar,
+.btn-adicionar {
+  flex: 1;
+  min-height: 48px;
+  border-radius: 12px;
+  font-family: var(--fonte-corpo, 'Nunito', system-ui, sans-serif);
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.btn-cancelar {
+  background: var(--branco, #ffffff);
+  color: var(--vermelho, #c8102e);
+  border-color: var(--vermelho, #c8102e);
+}
+
+.btn-cancelar:active {
+  background: var(--vermelho, #c8102e);
+  color: var(--branco, #ffffff);
+  transform: scale(0.97);
+}
+
+.btn-adicionar {
+  background: var(--verde, #1f6b3a);
+  color: var(--branco, #ffffff);
+  box-shadow: 0 3px 0 var(--verde-escuro, #14492a);
+}
+
+.btn-adicionar:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}

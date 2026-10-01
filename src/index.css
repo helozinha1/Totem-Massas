@@ -1,0 +1,13 @@
+/* index.css ou global.css */
+:root {
+  --verde: #1f6b3a;
+  --verde-escuro: #14492a;
+  --verde-claro: #e6f1e9;
+  --vermelho: #c8102e;
+  --vermelho-escuro: #9d0c24;
+  --branco: #ffffff;
+  --creme: #fffbf2;
+  --tinta: #2a2420;
+  --fonte-titulo: 'Fraunces', Georgia, serif;
+  --fonte-corpo: 'Nunito', system-ui, sans-serif;
+}

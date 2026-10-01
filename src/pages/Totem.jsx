@@ -13,7 +13,6 @@ import { categoriasDados, produtosDados } from '../data/menuDados.js';
 export default function Totem() {
   const navegar = useNavigate();
 
-  const [local, setLocal] = useState('');
   const [categorias, setCategorias] = useState([]);
   const [produtos, setProdutos] = useState([]);
   const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
@@ -56,7 +55,7 @@ export default function Totem() {
         setTimeout(() => {
           navegar('/');
           setCarrinho([]);
-          setLocal('');
+          
           setMetodoPagamento('');
         }, 5000);
       }, 5000);
@@ -68,8 +67,7 @@ export default function Totem() {
       <Routes>
         <Route path="/" element={<TelaSplash executarComAtraso={executarComAtraso} />} />
 
-        <Route path="/local" element={<TelaLocal executarComAtraso={executarComAtraso} setLocal={setLocal} />} />
-
+        
         <Route path="/menu" element={
           <TelaMenu
             categorias={categorias}

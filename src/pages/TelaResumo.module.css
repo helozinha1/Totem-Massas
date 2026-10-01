@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700;800&display=swap');
+
+/* ============================================================
+   TelaResumo · 100% Mobile App · Tema Italiano
+   ============================================================ */
+
+.tela-review {
+  --verde: #1f6b3a;
+  --verde-escuro: #14492a;
+  --verde-claro: #e6f1e9;
+  --vermelho: #c8102e;
+  --vermelho-escuro: #9d0c24;
+  --branco: #ffffff;
+  --creme: #fffbf2;
+  --tinta: #2a2420;
+
+  --fonte-titulo: 'Fraunces', Georgia, serif;
+  --fonte-corpo: 'Nunito', system-ui, sans-serif;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--creme);
+  color: var(--tinta);
+  font-family: var(--fonte-corpo);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Faixa tricolor no topo */
+.tela-review::before {
+  content: '';
+  flex: 0 0 auto;
+  height: calc(6px + env(safe-area-inset-top, 0px));
+  background: linear-gradient(
+    90deg,
+    var(--verde) 0 33.33%,
+    var(--branco) 33.33% 66.66%,
+    var(--vermelho) 66.66% 100%
+  );
+}
+
+.tela-review > h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--vermelho);
+  text-align: center;
+  margin: 16px 12px 10px;
+}
+
+/* ÁREA DA LISTA DE ITENS */
+.lista-review {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 14px;
+}
+
+.nota-fiscal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* RODAPÉ DO RESUMO */
+.review-rodape-cinza {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+  background: var(--branco);
+  border-top: 4px solid var(--vermelho);
+  box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.review-totais {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--verde-escuro);
+}
+
+.review-totais span {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-totais span::before {
+  content: 'Total:';
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--tinta);
+}
+
+.review-botoes-finais {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-retornar,
+.btn-pagar {
+  min-height: 48px;
+  border-radius: 12px;
+  font-family: var(--fonte-corpo);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+  box-sizing: border-box;
+}
+
+.btn-retornar {
+  flex: 1;
+  background: var(--branco);
+  color: var(--vermelho);
+  border-color: var(--vermelho);
+}
+
+.btn-retornar:active {
+  background: var(--vermelho);
+  color: var(--branco);
+  transform: scale(0.97);
+}
+
+.btn-pagar {
+  flex: 2;
+  background: var(--verde);
+  color: var(--branco);
+  box-shadow: 0 3px 0 var(--verde-escuro);
+}
+
+.btn-pagar:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
